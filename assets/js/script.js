@@ -27,6 +27,9 @@ let uppercase = false;
 // Create an empty array to store the selected character types
 let selectedCharacters = [];
 
+// Create a variable to store the random generated characters to correct password length
+let characters = "";
+
 // Function to prompt user for password options
 function getPasswordOptions() {
   // Prompt user to input a desired password length.
@@ -65,13 +68,18 @@ function getSelectedCharacters(selected, arr) {
 
 // Function for getting a random element from an array
 function getRandom(arr) {
+  // Get a random index from an array
+  let index = Math.floor(Math.random() * arr.length);
 
+  //Return the random index
+  return arr[index];
 }
 
 // Function to generate password with user input
 function generatePassword() {
   // Call the password option function
   getPasswordOptions();
+
   // Call the selected characters function for special characters
   getSelectedCharacters(special, specialCharacters);
   // Call the selected characters function for numeric characters
@@ -81,6 +89,13 @@ function generatePassword() {
   // Call the selected characters function for uppercase characters
   getSelectedCharacters(uppercase, upperCasedCharacters);
 
+  // Loop through random index generator and merge into characters array
+  for (let i = 0; i < passwordLength; i++) {
+    let random = getRandom(selectedCharacters);
+    characters = characters.concat(random);
+  }
+  // return as string of characters
+  return characters;
 }
 
 // Get references to the #generate element
