@@ -116,9 +116,13 @@ let generateBtn = document.querySelector('#generate');
 function writePassword() {
   reset();
   let password = generatePassword();
-  let passwordText = document.querySelector('#password');
 
-  passwordText.value = password;
+  // If atleast one character type is selected, the text area placeholder will change
+  if (special === true || number === true || lowercase === true || uppercase === true) {
+    let passwordText = document.querySelector('#password');
+
+    passwordText.value = password;
+  }
 }
 
 // Add event listener to generate button
