@@ -54,6 +54,15 @@ function getPasswordOptions() {
   }
 }
 
+// Function for getting the selected characters, and combining them to new array
+function getSelectedCharacters(selected, arr) {
+  if (selected === true) {
+    selectedCharacters = selectedCharacters.concat(arr);
+  }
+  // Return new array of selected characters
+  return selectedCharacters;
+}
+
 // Function for getting a random element from an array
 function getRandom(arr) {
 
@@ -61,7 +70,16 @@ function getRandom(arr) {
 
 // Function to generate password with user input
 function generatePassword() {
-  getPasswordOptions()
+  // Call the password option function
+  getPasswordOptions();
+  // Call the selected characters function for special characters
+  getSelectedCharacters(special, specialCharacters);
+  // Call the selected characters function for numeric characters
+  getSelectedCharacters(number, numericCharacters);
+  // Call the selected characters function for lowercase characters
+  getSelectedCharacters(lowercase, lowerCasedCharacters);
+  // Call the selected characters function for uppercase characters
+  getSelectedCharacters(uppercase, upperCasedCharacters);
 
 }
 
