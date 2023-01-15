@@ -98,11 +98,23 @@ function generatePassword() {
   return characters;
 }
 
+// Function to reset the variables when the generate password button is clicked a second time
+function reset() {
+  passwordLength = 0;
+  special = false;
+  number = false;
+  lowercase = false;
+  uppercase = false;
+  selectedCharacters = [];
+  characters = "";
+}
+
 // Get references to the #generate element
 let generateBtn = document.querySelector('#generate');
 
 // Write password to the #password input
 function writePassword() {
+  reset();
   let password = generatePassword();
   let passwordText = document.querySelector('#password');
 
